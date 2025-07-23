@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Billiard Teach - Técnico Informático Profesional</title>
+<style>
+  /* Reset y base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    background: url('fondo-sutil.jpg') no-repeat center center fixed; /* Cambia por tu imagen */
+    background-size: cover;
+  }
+  a {
+    color: #007b8f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #005f6b;
+    text-decoration: underline;
+  }
+  
+  /* Contenedor principal ocupa casi toda la pantalla horizontal */
+  .container {
+    max-width: 1200px;
+    margin: 40px auto 60px auto;
+    background: rgba(255,255,255,0.95); /* fondo blanco semitransparente */
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgb(0 0 0 / 0.12);
+  }
+
+  /* Header con logo y título a la izquierda */
+  header {
+    background-color: rgba(0,67,80,0.85);
+    color: #e6f2f5;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+  }
+  header img {
+    height: 60px;
+    width: auto;
+    border-radius: 8px;
+  }
+  header h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+  header p {
+    margin: 0 0 0 auto;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #a0c4c9;
+  }
+
+  /* Secciones */
+  section {
+    margin-bottom: 50px;
+  }
+  h2 {
+    color: #007b8f;
+    border-bottom: 3px solid #6ec1c2;
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  li {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-left: 35px;
+    position: relative;
+    line-height: 1.4;
+  }
+  li::before {
+    content: "🔹";
+    position: absolute;
+    left: 0;
+    font-size: 1.4rem;
+    top: 2px;
+  }
+  .precio {
+    color: #d85c2a;
+    font-weight: 900;
+    margin-left: 8px;
+    font-size: 1.15rem;
+  }
+  .img-container {
+    text-align: center;
+    margin-top: 25px;
+  }
+  .img-container img {
+    max-width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgb(0 0 0 / 0.18);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .img-container img:hover {
+    transform: scale(1.05);
+  }
+  .btn-cotizar {
+    display: inline-block;
+    background-color: #007b8f;
+    color: white;
+    font-weight: 800;
+    padding: 16px 38px;
+    border-radius: 50px;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+    font-size: 1.25rem;
+    text-align: center;
+    box-shadow: 0 6px 14px rgb(0 123 143 / 0.6);
+    text-decoration: none;
+  }
+  .btn-cotizar:hover {
+    background-color: #005f6b;
+    box-shadow: 0 8px 20px rgb(0 95 107 / 0.8);
+  }
+  .contact-list a {
+    font-weight: 600;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  th, td {
+    border: 1px solid #c4dfe6;
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 1.1rem;
+  }
+  th {
+    background-color: #d4eff5;
+    color: #005f6b;
+  }
+  td {
+    background-color: #f7fcfd;
+  }
+  footer {
+    background-color: rgba(0,67,80,0.85);
+    color: #d1e7eb;
+    text-align: center;
+    padding: 22px 15px;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  @media (max-width: 700px) {
+    .container {
+      margin: 20px 15px 40px 15px;
+      padding: 25px 20px;
+    }
+    header {
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px 20px;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0;
+    }
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 18px;
+    }
+    li {
+      font-size: 1rem;
+      padding-left: 28px;
+    }
+    .precio {
+      font-size: 1rem;
+    }
+    .btn-cotizar {
+      font-size: 1.1rem;
+      padding: 14px 30px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!-- Cambia el src por el enlace o ruta de tu logo -->
+  <img src="logo.png" alt="Logo Billiard Teach" />
+  <h1>Billiard Teach</h1>
+  <p>Técnico Informático Profesional — Nicolás Villar Henríquez — Osorno, Chile</p>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>📌 Servicios que te ofrezco</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Área</th>
+          <th>¿Qué hago por ti?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🛠️ Reparación y mantenimiento</td>
+          <td>Cuido y arreglo tu computadora o notebook, limpio y cambio piezas para que funcione mejor y dure más.</td>
+        </tr>
+        <tr>
+          <td>💻 Instalación y configuración</td>
+          <td>Instalo Windows o Linux, configuro tu equipo para que sea rápido y fácil de usar.</td>
+        </tr>
+        <tr>
+          <td>🔧 Programas y aplicaciones</td>
+          <td>Instalo el software que necesites: Office, navegadores, antivirus y programas especiales.</td>
+        </tr>
+        <tr>
+          <td>🌐 Soporte a distancia</td>
+          <td>Te ayudo sin que tengas que salir de tu casa, conectándonos por TeamViewer o AnyDesk para solucionar problemas.</td>
+        </tr>
+        <tr>
+          <td>🧰 Soluciones a medida</td>
+          <td>Hago pequeñas herramientas o automatizaciones para que tus tareas diarias sean más fáciles y rápidas.</td>
+        </tr>
+        <tr>
+          <td>🌍 Diseño Web simple</td>
+          <td>Creo páginas web básicas para ti o tu negocio, con formularios, contacto directo y redes sociales.</td>
+        </tr>
+        <tr>
+          <td>📦 Respaldo y recuperación</td>
+          <td>Recupero tus archivos importantes y te ayudo a hacer copias de seguridad para que no pierdas nada.</td>
+        </tr>
+        <tr>
+          <td>🔒 Seguridad y limpieza</td>
+          <td>Elimino virus, malware y optimizo tu equipo para que funcione rápido y seguro.</td>
+        </tr>
+        <tr>
+          <td>🏠 Servicio a domicilio</td>
+          <td>Voy a tu casa en Osorno para ayudarte con tu computador o notebook, sin complicaciones.</td>
+        </tr>
+        <tr>
+          <td>📱 Redes y conexión</td>
+          <td>Configuro tu WiFi y redes para que tengas internet rápido y sin problemas en tu hogar o negocio.</td>
+        </tr>
+        <tr>
+          <td>🖨️ Impresoras</td>
+          <td>Instalo y arreglo impresoras para que imprimas sin problemas.</td>
+        </tr>
+        <tr>
+          <td>🔄 Actualizaciones</td>
+          <td>Actualizo tu hardware y software para que todo funcione bien y rápido.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Armado y Cotización Completa de PC Gamer</h2>
+    <p>Te ayudo a armar tu PC gamer ideal, ya sea desde cero o con tus piezas ya compradas. Además, hago la cotización completa para que se ajuste a tu presupuesto y gustos.</p>
+    <ul>
+      <li>Armado completo: <span class="precio">$40.000</span></li>
+      <li>Busco y cotizo todos los componentes para que armes el equipo perfecto</li>
+      <li>Instalo el sistema operativo y todos los programas necesarios para que funcione sin problemas</li>
+    </ul>
+    <div class="img-container">
+      <!-- Cambia esta imagen por una tuya si quieres -->
+      <img src="pc-armado.jpg" alt="Armado y Cotización PC Gamer" />
+    </div>
+  </section>
+
+  <section>
+    <h2>¿Quieres una cotización personalizada?</h2>
+    <p>Escríbeme por cualquiera de estos medios y te ayudo a encontrar la mejor solución para ti:</p>
+    <ul class="contact-list">
+      <li>WhatsApp: <a href="https://wa.me/56912345678" target="_blank">+56 9 1234 5678</a></li>
+      <li>Instagram: <a href="https://instagram.com/tu_usuario" target="_blank">@tu_usuario</a></li>
+      <li>Facebook: <a href="https://facebook.com/tu_usuario" target="_blank">tu_usuario</a></li>
+      <li>Email: <a href="mailto:contacto@tuempresa.cl">contacto@tuempresa.cl</a></li>
+    </ul>
+    <a href="mailto:contacto@tuempresa.cl" class="btn-cotizar" target="_blank" rel="noopener">Solicitar Cotización</a>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2025 Técnico Informático Nicolás Villar Henríquez - Osorno, Chile
+</footer>
+
+</body>
+</html>
